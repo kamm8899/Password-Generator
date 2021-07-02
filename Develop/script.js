@@ -13,7 +13,7 @@ var generateBtn = document.querySelector("#generate");
  var alphabetUpper = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"];
  
  //empty array of characters
- var emptyArray =[];
+ var  characterArray =[];
 
 function generatePassword() {
 
@@ -26,7 +26,6 @@ function generatePassword() {
   //ask the user if they want lower case letters
   var promptLowerCase= prompt("Would you like to use lowercase letters?");
   // if numbers, append numbers to character array
-
   // if sc, append special characters to character array
   // if ul, append upper case letetrs to characters array
   // if ll, append lowercase letters
@@ -46,11 +45,26 @@ var numCharacter = function() {
     numCharacter;
   }else if(numberOfCharacters >128){
     alert("The Number of characters cannot exceed 128");
-  }else(numberOfcharacters === "" || numberOfCharacters === null)
+    numCharacter;
+  }else(numberOfcharacters === "" || numberOfCharacters === null){
     alert("You need to provide a number of Characters between 8 and 128");
+    numCharacter;
   }
   return numberOfCharacters;
+}
+  var desiredNumbers = function() {
+    var promptNumbers = prompt("Would you like to use numbers for your password? Please enter 1 for Yes and 2 for No");
+    if(promptNumbers === 1){
+      alert("You chose to include numbers in your password");
+      //how do I append to passwor?
+    }else if(promptNumbers === 2){
+      alert("You chose to not include numbers in your password");
+    }else{
+      alert("please make a valid selection");
+    }
 
+    }
+ 
 
 // Write password to the #password input
 function writePassword() {
