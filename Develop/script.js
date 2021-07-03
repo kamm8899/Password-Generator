@@ -138,7 +138,7 @@ var numCharacter = function() {
   }
 
   
-  for(var=i; i<numberOfCharacters.length; i++){
+  for(var i=0; i<numberOfCharacters.length; i++){
     password += characterArray(Math.floor(Math.random()* characterArray.length));
   }
   return password;
