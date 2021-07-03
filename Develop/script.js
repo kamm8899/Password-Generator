@@ -1,7 +1,8 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
 // array of special characters
-var specialCharacters = ['!', '@', '#', '$', '%', '&'];
+var specialCharacters = ['!', '@', '#', '$', '%', '&', '~','^','*'];
+
 // array of numbers
 var arrayNumbers = [ 0,1, 2 ,3 ,4,5, 6, 7, 8 ,9 ];
 // array of lower case letters
@@ -16,66 +17,85 @@ var  characterArray =[];
 var passwordArray= [];
 
 function generatePassword() {
+//Steps to follow 
+ 
+  //ask the user how many characters-done-not sure if I did this right
+  //ask the user if they want numbers-done-not sure if I did this right
+  //ask the user if they want special characters-done-not sure if I did this right
+  //ask the user if they want uppercase letters-done-not sure if I did this right
+  //ask the user if they want lower case letters-done-not sure if I did this right
+  // if numbers, append numbers to character array-done-not sure if I did this right
+  // if sc, append special characters to character array-done-not sure if I did this right
+  // if ul, append upper case letetrs to characters array-done-not sure if I did this right
+  // if ll, append lowercase letters-done-not sure if I did this right
+  //generate the password
+  //repeat based on number of desired characters-attempted
+  //add random character from character array to password
+  //return the password
+
+
+
+
+
+
+
+
+
+
+
+
+
 //Make a function to add characters to password
 var numCharacter = function() {
   //ask user how many characters they would like to have
   var numberOfCharacters = prompt('How many characters would you like to use?');
   if(numberOfCharacters < 8){
     alert("The Password needs to be more then 8 characters");
-    numCharacter;
-    
+    numCharacter();
   }else if(numberOfCharacters >128){
     alert("The Number of characters cannot exceed 128");
-    numCharacter;
+    numCharacter();
   }else{//(numberOfcharacters === "" || numberOfCharacters === null){
     alert("You need to provide a number of Characters between 8 and 128");
-    numCharacter;
+    numCharacter();
   }
   return numberOfCharacters;
 }
 
   var desiredNumbers = function() {
     var promptNumbers = prompt("Would you like to use numbers for your password? Please enter 1 for Yes and 2 for No");
-    if(promptNumbers === 1){
+    if(promptNumbers){
       alert("You chose to include numbers in your password");
       //how do I append to passwor?
-    }else if(promptNumbers === 2){
+    }else if(!promptNumbers){
       alert("You chose to not include numbers in your password");
       return promptNumbers;
-    }else{
-      alert("please make a valid selection");
-      desiredNumbers();
     }
+    
 
         //function to use special numbers
         var specialNum =function(){
           //ask the user if they want special characters
-          var promptSpecCharacters= prompt("Would you like to use special characters? Please input 1 for Yes and 2 for No");
-            if(promptSpecCharacters === 1){
+          var promptSpecCharacters= confirm("Would you like to use special characters? Please input 1 for Yes and 2 for No");
+            if(promptSpecCharacters ){
               alert("You have chosen to include Special characters in your password");
               return promptSpecCharacters;
-            }else if(promptSpecCharacters === 2){
+            }else if(!promptSpecCharacters){
               alert("You have chosen to not include Special characters");
               return promptSpecCharacters;
-            }else{
-              alert("Please make a valid choice");
-              specialNum();
             }
             return promptSpecCharacters;
         }
 // function for upperCase
         var upperCase = function(){
           //ask the user if they want uppercase letters
-        var promptUpperCase= prompt("Would you like to use uppercase letters? Please choose 1 for yes, and 2 for No");
-          if(promptUpperCase === 1){
+        var promptUpperCase= confirm("Would you like to use uppercase letters? Please choose 1 for yes, and 2 for No");
+          if(promptUpperCase){
             alert("You have chosen to include Upper Case Letters");
             return promptUpperCase;
-          }else if(promptUserCase === 2){
+          }else if(!promptUserCase){
             alert("You have chosen to not include Upper Case Letters");
             return promptUpperCase;
-          }else{
-            alert("Please make a valid choice");
-            upperCase();
           }
           return promptUpperCase;
        }
@@ -83,14 +103,12 @@ var numCharacter = function() {
        //lower Case function
        var lowerCase = function(){
         //ask the user if they want lower case letters
-       var promptLowerCase= prompt("Would you like to use lowercase letters? Please use '1' for Yes and '2' for No");
-         if(promptLowerCase === 1){
+       var promptLowerCase= confirm("Would you like to use lowercase letters? Please use '1' for Yes and '2' for No");
+         if(promptLowerCase){
            alert("You have chosen to include lower case letters in your password");
            lowerCase();
-         }else if(promptLowerCase ===2){
+         }else if(!promptLowerCase){
            alert("You have chosen not to use lower case letters");
-         }else{
-           alert("You have chosen not to include lower case letters");
          }
       }
      
