@@ -24,7 +24,8 @@ function generatePassword() {
   specialNum();
   lowerCase();
   upperCase();
-
+// random for loop to generate password
+//add random character from character array to password
   var password= "";
   for(i=0; i<characters; i++){
     var index = Math.floor(Math.random()* characterArray.length);
@@ -88,6 +89,7 @@ function upperCase(){
         var promptUpperCase= confirm("Would you like to use uppercase letters?");
           if(promptUpperCase){
             alert("You have chosen to include Upper Case Letters");
+            //appending to the array
             characterArray=characterArray.concat(alphabetUpper);
             console.log(characterArray);
           }else if(!promptUserCase){
@@ -103,6 +105,7 @@ function lowerCase(){
        var promptLowerCase= confirm("Would you like to use lowercase letters?");
          if(promptLowerCase){
            alert("You have chosen to include lower case letters in your password");
+           //appending lowerCase to the array
            characterArray=characterArray.concat(alphabet);
            console.log(characterArray);
          }else if(!promptLowerCase){
@@ -110,13 +113,6 @@ function lowerCase(){
            console.log(characterArray);
          }
         }
-  
-  
-  //generate the password
-  //repeat based on number of desired characters
-  //add random character from character array to password
-  //return the password
-
  
 // Write password to the #password input
 function writePassword() {
