@@ -17,157 +17,106 @@ var  characterArray =[];
 var passwordArray= [];
 
 function generatePassword() {
-//Steps to follow 
- 
-  //ask the user how many characters-done-not sure if I did this right
-  //ask the user if they want numbers-done-not sure if I did this right
-  //ask the user if they want special characters-done-not sure if I did this right
-  //ask the user if they want uppercase letters-done-not sure if I did this right
-  //ask the user if they want lower case letters-done-not sure if I did this right
-  // if numbers, append numbers to character array-done-not sure if I did this right
-  // if sc, append special characters to character array-done-not sure if I did this right
-  // if ul, append upper case letetrs to characters array-done-not sure if I did this right
-  // if ll, append lowercase letters-done-not sure if I did this right
-  //generate the password
-  //repeat based on number of desired characters-attempted
-  //add random character from character array to password
-  //return the password
 
+  characterArray=[];
+  characters= numCharacter();
+  desiredNumbers();
+  specialNum();
+  lowerCase();
+  upperCase();
 
+  var password= "";
+  for(i=0; i<characters; i++){
+    var index = Math.floor(Math.random()* characterArray.length);
+    password += characterArray[index];
+    
+ }
+ console.log(password);
+  return password;
 
-
-
-
-
-
-
-
-
-
-
-//Make a function to add characters to password
-var numCharacter = function() {
-  //ask user how many characters they would like to have
-  var numberOfCharacters = prompt('How many characters would you like to use?');
-  if(numberOfCharacters < 8){
-    alert("The Password needs to be more then 8 characters");
-    numCharacter();
-  }else if(numberOfCharacters >128){
-    alert("The Number of characters cannot exceed 128");
-    numCharacter();
-  }else{//(numberOfcharacters === "" || numberOfCharacters === null){
-    alert("You need to provide a number of Characters between 8 and 128");
-    numCharacter();
-  }
-  return numberOfCharacters;
 }
 
-  var desiredNumbers = function() {
-    var promptNumbers = prompt("Would you like to use numbers for your password? Please enter 1 for Yes and 2 for No");
+//Make a function to add characters to password
+function numCharacter() {
+ var nums = parseInt(prompt("How many characters would you like? Pick a number between 8 and 128"), 10);
+ console.log(nums);
+ //NaN is used because we turned it into an integer
+ if(nums < 8 || isNaN(nums)){
+   alert("You selected below 8 characters?");
+   numCharacter();
+ }else if(nums > 128 || isNaN(nums)){
+   alert("You selected over 128");
+   numCharacter();
+ }else{
+   return nums;
+ }
+}
+
+function desiredNumbers () {
+    var promptNumbers = confirm("Would you like to use numbers for your password?");
     if(promptNumbers){
       alert("You chose to include numbers in your password");
+      characterArray= characterArray.concat(arrayNumbers);
+      console.log(characterArray);
       //how do I append to passwor?
     }else if(!promptNumbers){
       alert("You chose to not include numbers in your password");
-      return promptNumbers;
+      console.log(characterArray);
+      
     }
-    
+  }
 
         //function to use special numbers
-        var specialNum =function(){
+function specialNum (){
           //ask the user if they want special characters
-          var promptSpecCharacters= confirm("Would you like to use special characters? Please input 1 for Yes and 2 for No");
+          var promptSpecCharacters= confirm("Would you like to use special characters?");
             if(promptSpecCharacters ){
               alert("You have chosen to include Special characters in your password");
-              return promptSpecCharacters;
+              characterArray= characterArray.concat(specialCharacters);
+              console.log(characterArray);
             }else if(!promptSpecCharacters){
               alert("You have chosen to not include Special characters");
-              return promptSpecCharacters;
+              console.log(characterArray);
+              
             }
-            return promptSpecCharacters;
+           
         }
+      
 // function for upperCase
-        var upperCase = function(){
+function upperCase(){
           //ask the user if they want uppercase letters
-        var promptUpperCase= confirm("Would you like to use uppercase letters? Please choose 1 for yes, and 2 for No");
+        var promptUpperCase= confirm("Would you like to use uppercase letters?");
           if(promptUpperCase){
             alert("You have chosen to include Upper Case Letters");
-            return promptUpperCase;
+            characterArray=characterArray.concat(alphabetUpper);
+            console.log(characterArray);
           }else if(!promptUserCase){
             alert("You have chosen to not include Upper Case Letters");
-            return promptUpperCase;
+            console.log(characterArray);
+            
           }
-          return promptUpperCase;
+       
        }
-
        //lower Case function
-       var lowerCase = function(){
+function lowerCase(){
         //ask the user if they want lower case letters
-       var promptLowerCase= confirm("Would you like to use lowercase letters? Please use '1' for Yes and '2' for No");
+       var promptLowerCase= confirm("Would you like to use lowercase letters?");
          if(promptLowerCase){
            alert("You have chosen to include lower case letters in your password");
-           lowerCase();
+           characterArray=characterArray.concat(alphabet);
+           console.log(characterArray);
          }else if(!promptLowerCase){
            alert("You have chosen not to use lower case letters");
+           console.log(characterArray);
          }
-      }
-     
-
-  if(desiredNumbers === 1 && specialNum === 1 && upperCase === 1 && lowerCase ===1 ){
-    characterArray= specialCharacters.concat[alphabet, arrayNumbers, alphabetUpper];
-  }else if(desiredNumbers === 1 && specialNum === 1 && upperCase === 1){
-    characterArray= specialCharacters.concat[alphabetUpper, arrayNumbers];
-  }else if(desiredNumbers ==1 && specialNum === 1 && lowerCase ===1){
-    characterArray = specialCharacters.concat[alphabet, arrayNumbers];
-  }else if(specialNum ==1 && lowerCase ==1 && upperCase ==1){
-    characterArray = specialCharacters.concat[alphabet, alphabetUpper];
-  }else if(desiredNumbers ==1 && lowerCase ==1 && upperCase ==1){
-    characterArray = arrayNumbers.concat[alphabet, alphabetUpper];
-  }else if(desiredNumbers ==1 && specialNum==1 && lowerCase ==1){
-    characterArray = specialCharacters.concat[alphabet,arrayNumbers];
-  }else if(desiredNumbers ==1 && specialNum ==1 && upperCase==1){
-    characterArray = specialCharacters.concat[alphabetUpper,arrayNumbers];
-  }else if(desiredNum ==1 && specialNum ==1){
-    characterArray = specialCharacters.concat[arrayNumbers];
-  }else if(desiredNum==1 && upperCase ==1){
-    characterArray = arrayNumbers.concat[alphabetUpper];
-  }else if(desiredNum==1 && lowerCase){
-    characterArray = arrayNumbers.concat[alphabet];
-  }else if(specialNum ==1 && lowerCase){
-    characterArray = specialCharacters.concat[alphabet];
-  }else if(specialNum ==1 && upperCase){
-    characterArray = specialCharacters.concat[alphabetUpper];
-  }else if(specialNum ==1 && desiredNumber ==1){
-    characterArray = specialCharacters.concat[arrayNumbers];
-  }else if(lowerCase== 1 && upperCase ==1){
-    characterArray = alphabetUpper.concat[alphabet];
-  }else if(specialNum ==1){
-    //dont thing this is the right way to add the array into the character array
-    characterArray += specialCharacters;
-  }else if(lowerCase ==1){
-    //dont thing this is the right way to add the array into the character array
-    characterArray += alphabet;
-  }else if(upperCase ==1){
-    //dont thing this is the right way to add the array into the character array
-    characterArray += alphabetUpper;
-  }else{
-    //dont thing this is the right way to add the array into the character array
-    characterArray += desiredNum;
-  }
-
-  
-  for(var i=0; i<numberOfCharacters.length; i++){
-    password += characterArray(Math.floor(Math.random()* characterArray.length));
-  }
-  return password;
+        }
   
   
   //generate the password
   //repeat based on number of desired characters
   //add random character from character array to password
   //return the password
-}
-}
+
  
 // Write password to the #password input
 function writePassword() {
@@ -180,7 +129,3 @@ function writePassword() {
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
-//whats the difference of using var or const for arrayNumbers
-//Do the arrays have to be inside of the function?
-//Not sure how to get the prompts to work, or call back on it
-//Not sure how to append - if using concat to fuse array if something was good how do you ensure it gets reset
